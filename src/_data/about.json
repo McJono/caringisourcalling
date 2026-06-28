@@ -1,0 +1,26 @@
+{
+  "label": "Who We Are",
+  "heading": "Built by a support worker who was tired of broken promises.",
+  "paragraphs": [
+    "Caring Is Our Calling was founded by someone who has worked inside the NDIS system — who has seen what happens when agencies grow too fast, stretch their teams too thin, and forget that every client is a person, not a number.",
+    "We exist to do things differently. By design, we will never have more than 8 clients at any one time. This isn't a compromise — it's the whole point.",
+    "That small number means every client gets a dedicated, consistent support team. The same familiar faces, week in and week out. No roster churn. No ghost workers. Just real, relationship-based support."
+  ],
+  "stats": [
+    {
+      "value": "8",
+      "label": "Maximum Clients",
+      "desc": "By design, not by accident. Small by choice so we can be great at what we do."
+    },
+    {
+      "value": "100%",
+      "label": "Dedicated Team",
+      "desc": "The same qualified workers, every visit. Consistency is the foundation of trust."
+    },
+    {
+      "value": "NDIS",
+      "label": "Registered Provider",
+      "desc": "Fully registered and compliant with all NDIS Commission requirements."
+    }
+  ]
+}

@@ -8,28 +8,89 @@ NDIS registered behaviour support services — small by design, exceptional by c
 
 | Layer | Choice |
 |---|---|
-| Website | Static HTML · CSS · Vanilla JS |
+| Site generator | Eleventy (11ty) v3 |
+| Templates | Nunjucks (.njk) |
+| Styles | Plain CSS |
+| Scripts | Vanilla JS |
 | Forms | PHP mailer (SMTP + reCAPTCHA v2) |
-| Hosting | GitHub Pages (static) |
-| Domain | `caringisourcalling.com.au` |
-| Email | SMTP (Gmail / SendGrid / Mailgun / SES) |
+| Hosting | GitHub Pages (static output in `_site/`) |
 
 ## Quick Start
 
 ```bash
-# Open in browser
-open index.html
+npm install
+npm run dev       # dev server with live reload
+npm run build     # production build → _site/
+```
 
-# Or serve locally (any static server works)
-npx serve .
-python3 -m http.server 8080
+The dev server runs at `http://localhost:8080`.
+
+## Editing Content
+
+All content lives in JSON files in `src/_data/`. **You do not need to edit HTML.**
+
+| File | What it controls |
+|---|---|
+| `src/_data/site.json` | Business name, contact details, reCAPTCHA key |
+| `src/_data/nav.json` | Navigation links |
+| `src/_data/about.json` | About section text and stats |
+| `src/_data/services.json` | Service cards |
+| `src/_data/whyus.json` | Why Us section |
+| `src/_data/team.json` | Team section |
+| `src/_data/values.json` | Values strip icons/labels |
+| `src/_data/contact.json` | Contact section text |
+| `src/_data/footer.json` | Footer columns |
+
+**Example — change a phone number:**
+```bash
+# Just edit one line in site.json:
+"phone": "0412 345 678"   ← change here
+```
+
+**Example — add a new service card:**
+```json
+// add to src/_data/services.json → items array:
+{
+  "icon": "fa-star",
+  "title": "My New Service",
+  "desc": "Description here."
+}
+```
+
+## Project Structure
+
+```
+caringisourcalling/
+├── .eleventy.js          ← Eleventy config
+├── package.json
+├── mail.php              ← SMTP + reCAPTCHA form processor (in _site/)
+├── src/
+│   ├── index.njk         ← Main page template (the only HTML file)
+│   ├── _data/            ← All content in JSON — edit these!
+│   │   ├── site.json
+│   │   ├── nav.json
+│   │   ├── about.json
+│   │   ├── services.json
+│   │   ├── whyus.json
+│   │   ├── team.json
+│   │   ├── values.json
+│   │   ├── contact.json
+│   │   └── footer.json
+│   ├── _includes/
+│   │   └── layouts/
+│   │       └── base.njk  ← Base HTML shell
+│   └── assets/
+│       ├── css/styles.css
+│       ├── js/script.js
+│       └── img/favicon.svg
+└── _site/                ← Compiled output (what GitHub Pages serves)
 ```
 
 ## Setting Up the Contact Form
 
 The contact form uses PHP + PHPMailer for SMTP delivery and Google reCAPTCHA v2 for bot protection.
 
-### 1. Install PHPMailer
+### 1. Install PHPMailer (in project root)
 
 ```bash
 composer require phpmailer/phpmailer
@@ -40,58 +101,55 @@ composer require phpmailer/phpmailer
 1. Go to [https://www.google.com/recaptcha/admin/create](https://www.google.com/recaptcha/admin/create)
 2. Select **reCAPTCHA v2** → "I'm not a robot" checkbox
 3. Add your domain(s)
-4. Copy the **Site Key** into `index.html** (the `data-sitekey` attribute on the `.g-recaptcha` div)
-5. Copy the **Secret Key** into `mail.php` (`RECAPTCHA_SECRET`)
+4. Put the **Site Key** in `src/_data/site.json` → `recaptchaSiteKey`
+5. Put the **Secret Key** in `mail.php` (`RECAPTCHA_SECRET`)
 
 ### 3. Configure SMTP
 
 Edit the SMTP constants in `mail.php`:
 
 ```php
-define('SMTP_HOST',     'smtp.gmail.com');   // or mailgun/ses/sendgrid
+define('SMTP_HOST',     'smtp.gmail.com');   // or mailgun/sendgrid/ses
 define('SMTP_PORT',     587);                // 587 for TLS, 465 for SSL
 define('SMTP_USERNAME', 'you@gmail.com');
 define('SMTP_PASSWORD', 'your_app_password'); // Gmail: use an App Password
 define('SMTP_SECURE',   'tls');
 ```
 
-**Gmail users:** You need an [App Password](https://myaccount.google.com/apppasswords), not your regular password. Generate one for "Mail" → "Other (Custom name)".
+**Gmail:** Generate an [App Password](https://myaccount.google.com/apppasswords) — not your real password.
 
 **Other providers:**
-- Mailgun: use `smtp.mailgun.org`, port 587, TLS
-- SendGrid: use `smtp.sendgrid.net`, port 587, TLS
-- Amazon SES: use your SMTP endpoint, port 587, TLS
+- Mailgun: `smtp.mailgun.org`, port 587, TLS
+- SendGrid: `smtp.sendgrid.net`, port 587, TLS
+- Amazon SES: your SMTP endpoint, port 587, TLS
 
-### 4. Upload to PHP Hosting
+### 4. Update the form action (for GitHub Pages)
 
-The static files (`index.html`, `styles.css`, `script.js`, `favicon.svg`) can be hosted on GitHub Pages.
-
-The PHP mailer (`mail.php` + `vendor/`) needs PHP 7.4+ hosting with SSL. Options:
+GitHub Pages does not run PHP, so `mail.php` must live elsewhere. Options:
 - Your domain registrar's hosting
-- Netlify (PHP functions)
-- Vercel (serverless functions)
-- Any cPanel/CPH hosting
+- Netlify Functions
+- Vercel Serverless Functions
+- Any cPanel/CPH host
 
-Update the `<form action="...">` in `index.html` to point to your PHP endpoint.
-
-## Project Structure
-
+Update `src/_data/site.json`:
+```json
+"mailPhpUrl": "https://yourhost.com/mail.php"
 ```
-caringisourcalling/
-├── index.html        ← Main website (static)
-├── styles.css        ← All styles
-├── script.js         ← Interactivity + form handling
-├── mail.php          ← SMTP + reCAPTCHA form processor
-├── README.md
-└── .github/
-    └── workflows/
-        └── deploy.yml   ← GitHub Pages auto-deploy
-```
+
+Then rebuild: `npm run build` and upload the `_site/` folder (or keep `mail.php` outside `_site/` and host it separately).
+
+## GitHub Pages Deployment
+
+1. Enable Pages: **Settings → Pages → Source: GitHub Actions**
+2. The Eleventy build runs during deployment; `npm run build` outputs to `_site/`
+3. The site URL will be: `https://McJono.github.io/caringisourcalling`
+
+Or use the legacy approach: push `_site/` contents to a `gh-pages` branch.
 
 ## NDIS Services
 
-- **Behaviour Support Plans (BSP)** — Comprehensive, person-centred behaviour support plans developed collaboratively
-- **Behaviour Management** — Evidence-based strategies focused on proactive approaches, skill-building, and environmental adjustments
+- **Behaviour Support Plans (BSP)** — Comprehensive, person-centred behaviour support plans
+- **Behaviour Management** — Evidence-based strategies: proactive approaches, skill-building, environmental adjustments
 - **Support Coordination** — Navigating NDIS plans and connecting with the right services
 - **Allied Health Liaison** — Working alongside psychologists, OTs, and speech pathologists
 - **Daily Living Support** — In-home and community support to build independence

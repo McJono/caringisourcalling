@@ -1,0 +1,16 @@
+{
+  "label": "Our People",
+  "heading": "A small, dedicated team. Never bigger than it needs to be.",
+  "members": [
+    {
+      "role": "Founder & Lead Practitioner",
+      "bio": "A support worker who has worked in multiple NDIS agencies and started this service because they refused to accept the status quo. Committed to doing behaviour support the right way — small, consistent, and genuinely person-centred.",
+      "badge": "Founder"
+    },
+    {
+      "role": "Dedicated Support Workers",
+      "bio": "A handpicked team of qualified, experienced support workers. Every team member is carefully selected for their values, their skill, and their commitment to the people they support.",
+      "badge": "Support Team"
+    }
+  ]
+}

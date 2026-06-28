@@ -1,0 +1,279 @@
+---
+layout: layouts/base.njk
+title: false
+description: "NDIS registered behaviour support services — small by design, exceptional by commitment."
+---
+
+{% set s = site %}
+{% set navItems = nav %}
+{% set about = about %}
+{% set services = services %}
+{% set whyus = whyus %}
+{% set team = team %}
+{% set values = values %}
+{% set contact = contact %}
+{% set footer = footer %}
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">
+      <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="#0b3d91"/>
+        <path d="M50 20 C30 20 20 36 20 49 C20 68 50 82 50 82 C50 82 80 68 80 49 C80 36 70 20 50 20Z" fill="white"/>
+      </svg>
+      <span>{{ s.name }}</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      {%- for item in navItems -%}
+        <li>
+          <a href="{{ item.href }}"
+            {%- if item.cta %} class="btn btn-primary btn-sm"{% endif -%}>
+            {{ item.label }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-tag">NDIS Registered · Behaviour Support · Australia</p>
+    <h1>{{ s.tagline }}</h1>
+    <p class="hero-sub">We keep our team small so your support isn't. Dedicated behaviour support for NDIS participants — consistent faces, consistent quality, maximum 8 clients at a time.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-white">Get in Touch</a>
+      <a href="#about" class="btn btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-graphic">
+    <div class="heart-circle">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="96" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <circle cx="100" cy="100" r="72" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="48" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <path d="M100 46 C74 46 58 64 58 80 C58 104 100 122 100 122 C100 122 142 104 142 80 C142 64 126 46 100 46Z" fill="rgba(255,255,255,0.12)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">{{ about.label }}</div>
+    <h2 class="section-title">{{ about.heading }}</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        {%- for p in about.paragraphs -%}
+          <p>{{ p }}</p>
+        {%- endfor -%}
+      </div>
+      <div class="about-stats">
+        {%- for stat in about.stats -%}
+          <div class="stat-card">
+            <span class="stat-num">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+            <p>{{ stat.desc }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">{{ services.label }}</div>
+    <h2 class="section-title">{{ services.heading }}</h2>
+    <div class="services-grid">
+      {%- for svc in services.items -%}
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fa-solid {{ svc.icon }}"></i>
+          </div>
+          <h3>{{ svc.title }}</h3>
+          <p>{{ svc.desc }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="container">
+    <div class="section-label">{{ whyus.label }}</div>
+    <h2 class="section-title">{{ whyus.heading }}</h2>
+    <div class="why-grid">
+      {%- for item in whyus.items -%}
+        <div class="why-item">
+          <div class="why-num">{{ item.num }}</div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-label">{{ team.label }}</div>
+    <h2 class="section-title">{{ team.heading }}</h2>
+    <div class="team-grid">
+      {%- for member in team.members -%}
+        <div class="team-card">
+          <div class="team-avatar">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="58" fill="#e8f0fe"/>
+              <circle cx="60" cy="48" r="22" fill="#b8cff5"/>
+              <ellipse cx="60" cy="100" rx="34" ry="26" fill="#b8cff5"/>
+            </svg>
+          </div>
+          <h3>{{ member.role }}</h3>
+          <p>{{ member.bio }}</p>
+          <span class="team-badge">{{ member.badge }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- VALUES STRIP -->
+<section class="values-strip">
+  <div class="container">
+    <div class="values-grid">
+      {%- for v in values -%}
+        <div class="value-item">
+          <i class="fa-solid {{ v.icon }}"></i>
+          <span>{{ v.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="section-label">{{ contact.label }}</div>
+        <h2 class="section-title">{{ contact.heading }}</h2>
+        <p>{{ contact.intro }}</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:{{ contact.phoneLink }}">{{ contact.phone }}</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Service Area</strong>
+              <span>{{ contact.address }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form id="contactForm" action="{{ s.mailPhpUrl }}" method="POST" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic</option>
+                {%- for opt in contact.subjects -%}
+                  <option value="{{ opt.value }}">{{ opt.label }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="{{ s.recaptchaSiteKey }}" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
+            <p id="captchaError" class="field-error" style="display:none;">Please complete the reCAPTCHA verification.</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span>Send Message</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div id="formStatus" class="form-status" style="display:none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="logo">
+          <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="48" fill="#ffffff" fill-opacity="0.15"/>
+            <path d="M50 20 C30 20 20 36 20 49 C20 68 50 82 50 82 C50 82 80 68 80 49 C80 36 70 20 50 20Z" fill="white"/>
+          </svg>
+          <span>{{ s.name }}</span>
+        </a>
+        <p>{{ footer.tagline }}</p>
+      </div>
+      <div class="footer-links">
+        {%- for col in footer.columns -%}
+          <div class="footer-col">
+            <h4>{{ col.heading }}</h4>
+            <ul>
+              {%- for link in col.links -%}
+                <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {% year %} {{ s.name }}. All rights reserved. NDIS registered provider.</p>
+      <p>Built with care, not compromise.</p>
+    </div>
+  </div>
+</footer>
+
+{% block scripts %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}

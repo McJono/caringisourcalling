@@ -1,0 +1,36 @@
+{
+  "label": "What We Do",
+  "heading": "Specialist behaviour support, from assessment to implementation.",
+  "items": [
+    {
+      "icon": "fa-clipboard-list",
+      "title": "Behaviour Support Plans",
+      "desc": "Comprehensive BSPs developed in collaboration with clients, families, and allied health professionals. We take the time to understand the whole person — not just the behaviour."
+    },
+    {
+      "icon": "fa-chart-line",
+      "title": "Behaviour Management",
+      "desc": "Individualised behaviour management strategies grounded in evidence-based practice. We focus on proactive approaches, skill-building, and environmental adjustments."
+    },
+    {
+      "icon": "fa-users",
+      "title": "Support Coordination",
+      "desc": "Guidance navigating your NDIS plan, connecting you with the right services, and ensuring you get the most from your funded supports."
+    },
+    {
+      "icon": "fa-handshake",
+      "title": "Allied Health Liaison",
+      "desc": "We work alongside psychologists, occupational therapists, and speech pathologists to ensure a cohesive, multidisciplinary approach to your support."
+    },
+    {
+      "icon": "fa-house-chimney",
+      "title": "Daily Living Support",
+      "desc": "Personalised in-home and community support to build independence, life skills, and meaningful participation in everyday life."
+    },
+    {
+      "icon": "fa-book-open",
+      "title": "Training & Advice",
+      "desc": "Training for support workers and families on behaviour management approaches, restrictive practices awareness, and positive behaviour support."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Caring Is Our Calling",
+  "tagline": "Care That Actually Cares",
+  "description": "NDIS behaviour support services — small by design, exceptional by commitment.",
+  "email": "hello@caringisourcalling.com.au",
+  "phone": "0412 345 678",
+  "phoneLink": "+61412345678",
+  "address": "Australia (NDIS registered)",
+  "recaptchaSiteKey": "YOUR_RECAPTCHA_SITE_KEY",
+  "formspreeEndpoint": "YOUR_FORMSPREE_ID",
+  "mailPhpUrl": "/mail.php",
+  "url": "https://caringisourcalling.com.au"
+}

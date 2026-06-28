@@ -1,0 +1,13 @@
+{
+  "name": "caringisourcalling",
+  "version": "1.0.0",
+  "description": "Caring Is Our Calling — NDIS behaviour support website",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve --incremental"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

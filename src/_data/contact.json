@@ -1,0 +1,16 @@
+{
+  "label": "Get in Touch",
+  "heading": "Ready to start?",
+  "intro": "Whether you're a participant, a family member, or a support coordinator — we'd love to hear from you. Reach out and let's talk about how we can help.",
+  "phone": "0412 345 678",
+  "phoneLink": "+61412345678",
+  "email": "hello@caringisourcalling.com.au",
+  "address": "Australia (NDIS registered)",
+  "subjects": [
+    { "value": "new-referral", "label": "New Referral" },
+    { "value": "support-coordination", "label": "Support Coordination" },
+    { "value": "behaviour-support", "label": "Behaviour Support" },
+    { "value": "general-enquiry", "label": "General Enquiry" },
+    { "value": "other", "label": "Other" }
+  ]
+}

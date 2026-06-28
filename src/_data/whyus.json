@@ -1,0 +1,26 @@
+{
+  "label": "The Difference",
+  "heading": "Why we stay small — and why it matters.",
+  "items": [
+    {
+      "num": "01",
+      "title": "Consistent Team",
+      "desc": "With a maximum of 8 clients, we can guarantee the same workers attend every shift. No strangers. No last-minute changes. Just people who know you."
+    },
+    {
+      "num": "02",
+      "title": "High Quality, Always",
+      "desc": "We don't sacrifice quality for volume. Every client receives thorough, individualised attention because we're never stretched beyond what we can do well."
+    },
+    {
+      "num": "03",
+      "title": "Extremely High Satisfaction",
+      "desc": "Our workers are engaged, supported, and invested — because they're not burnt out managing 40+ clients. Happy workers mean better support for you."
+    },
+    {
+      "num": "04",
+      "title": "Person-Centred, Always",
+      "desc": "We build plans around the person — their goals, their strengths, their life. No cookie-cutter approaches. No one-size-fits-all shortcuts."
+    }
+  ]
+}
